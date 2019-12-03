@@ -3,19 +3,23 @@ $sql = "select * from category order by category_name asc";
 $run = mysqli_query($conn, $sql);
 ?>
 <header>
-    <div class="logo"><img alt="" src="./images/LOGO2.png" /></div>
+    <a href="index.php" class="logo"><img alt="" src="./images/LOGO2.png" /></a>
     <div class="menu_bar">
         <i class="fas fa-bars" id="menu"></i>
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="index.php">Trang chủ</a></li>
+            <li class="<?php if (isset($_SESSION['username']) and !isset($_GET['cate'])) echo 'active' ?>">
+                <a href="index.php">Trang chủ</a>
+            </li>
             <li><a href="./category.html">Mới nhất</a></li>
             <li><a href="./category.html">Xem nhiều</a></li>
             <?php
             while ($dong = mysqli_fetch_array($run)) {
                 ?>
-                <li class="hid"><a href="categories.php?cate=<?php echo $dong['id_category'] ?>"><?php echo $dong['category_name'] ?></a></li>
+                <li class="hid <?php if ($_GET['cate'] == $dong['id_category']) echo 'active' ?>">
+                    <a href="categories.php?cate=<?php echo $dong['id_category'] ?>"><?php echo $dong['category_name'] ?></a>
+                </li>
             <?php
             }
             ?>

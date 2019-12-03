@@ -137,6 +137,12 @@ header {
 .navigation ul li:hover > a {
   color: Rgb(23, 129, 194);
 }
+.navigation ul li.active {
+  border-bottom: 4px solid Rgb(23, 129, 194);
+}
+.navigation ul li.active a{
+  color: Rgb(23, 129, 194);
+}
 .user-action {
   padding-top: 15px;
   min-width: 150px;
@@ -146,7 +152,8 @@ header {
   float: left;
   margin: auto 15px;
 }
-.user-action ul li:hover,.user-action ul li:hover>a{
+.user-action ul li:hover,
+.user-action ul li:hover > a {
   color: Rgb(23, 129, 194);
   cursor: pointer;
 }
@@ -302,7 +309,7 @@ footer > .container {
 .mid-footer {
   width: 55%;
 }
-.mid-footer hr{
+.mid-footer hr {
   background: #9b9b9b;
 }
 .mid-footer p {

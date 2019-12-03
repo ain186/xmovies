@@ -24,6 +24,7 @@
 
 <body>
     <?php
+    include("config.php");
     include("modules/backtotop.php");
     include("modules/header.php");
     ?>

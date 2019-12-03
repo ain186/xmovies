@@ -1,42 +1,23 @@
+<?php
+$kind = $dong_info['id_category'];
+$sql_same = "select * from movie where id_category = $kind and id_movie != $id order by id_movie desc limit 6";
+$run_same = mysqli_query($conn, $sql_same);
+?>
 <div class="sameKind">
     <h2>Phim liên quan</h2>
     <ul class="list">
-        <li>
-            <a href="#">
-                <img src="images/films/01.jpg" alt="" width="100%" height="auto">
-                <p>Sài tiểu thất</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/films/02.jpg" alt="" width="100%" height="auto">
-                <p>Cực hạn 17</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/films/03.jpeg" alt="" width="100%" height="auto">
-                <p>Phượng dịch</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/films/01.jpg" alt="" width="100%" height="auto">
-                <p>Sài tiểu thất</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/films/05.jpeg" alt="" width="100%" height="auto">
-                <p>Thiên lôi nhất bộ chi</p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/films/06.jpeg" alt="" width="100%" height="auto">
-                <p>Bước vào ký ức của anh</p>
-            </a>
-        </li>
+        <?php
+        while ($dong_same = mysqli_fetch_array($run_same)) {
+            ?>
+            <li>
+                <a href="watch.php?movie=<?php echo $dong_same['id_movie'] ?>&ep=1">
+                    <img src="./images/films/<?php echo $dong_same['movie_image'] ?>.webp" alt="" width="100%" height="auto">
+                    <p><?php echo $dong_same['movie_name'] ?></p>
+                </a>
+            </li>
+        <?php
+        }
+        ?>
     </ul>
 </div>
 <div class="clearfix"></div>

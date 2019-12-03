@@ -1,21 +1,21 @@
 <?php
-    session_start();
-    include('config.php');
-    if($_SERVER['REQUEST_METHOD']=='POST'){
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-            $query ="select id_user,username,password,dialnumber from user where password='$password' and username='$username' ";
-            $result = mysqli_query($conn,$query);
-            if(mysqli_num_rows($result)==1){
-                list($id,$username,$password,$dialnumber) = mysqli_fetch_array($result,MYSQLI_NUM);
-                $_SESSION['id']=$id;
-                $_SESSION['username']=$username;
-                $_SESSION['phone']=$dialnumber;
-                header('location:index.php');
-            }else{
-                echo "<script type=\"text/javascript\">alert('Tên người dùng hoặc mật khẩu không đúng');</script>";
-            }
-        }
+session_start();
+include('config.php');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $query = "select id_user,username,password,dialnumber from user where password='$password' and username='$username' ";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) == 1) {
+        list($id, $username, $password, $dialnumber) = mysqli_fetch_array($result, MYSQLI_NUM);
+        $_SESSION['id'] = $id;
+        $_SESSION['username'] = $username;
+        $_SESSION['phone'] = $dialnumber;
+        header('location:index.php');
+    } else {
+        echo "<script type=\"text/javascript\">alert('Tên người dùng hoặc mật khẩu không đúng');</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +41,7 @@
     ?>
     <div id="main-content">
         <div class="container">
-        <form action="" class="form-area" method="post">
+            <form action="" class="form-area" method="post">
                 <div class="login">
                     <div class="login-title">
                         <h2>Đăng nhập</h2>
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
         </form>
     </div>
     <?php

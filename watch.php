@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include("config.php");
+$id = $_GET['movie'];
+$ep = $_GET['ep'];
+$sql_info = "select o1.*, o2.category_name from movie o1 join category o2 on o1.id_category = o2.id_category where id_movie = $id";
+$run_info = mysqli_query($conn, $sql_info);
+$dong_info = mysqli_fetch_array($run_info);
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Xem phim</title>
+    <title><?php echo $dong_info['movie_name'] ?></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/watch.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">

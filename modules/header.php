@@ -1,3 +1,7 @@
+<?php
+$sql = "select * from category order by category_name asc";
+$run = mysqli_query($conn, $sql);
+?>
 <header>
     <div class="logo"><img alt="" src="./images/LOGO2.png" /></div>
     <div class="menu_bar">
@@ -5,21 +9,21 @@
     </div>
     <div class="navigation">
         <ul>
-            <li><a href="./index.html">Trang chủ</a></li>
+            <li><a href="index.php">Trang chủ</a></li>
             <li><a href="./category.html">Mới nhất</a></li>
-            <li><a href="./category.html">Xem nhiều nhất</a></li>
-            <li class="hid"><a href="./action.html">Hành động</a></li>
-            <li class="hid"><a href="./vientuong.html">Viễn tưởng</a></li>
-            <li class="hid"><a href="./kinhdi.html">Kinh dị</a></li>
-            <li class="hid h1"><a href="./haihuoc.html">Hài hước</a></li>
-            <li class="hid h1"><a href="./love.html">Tình cảm</a></li>
-            <li class="hid h1"><a href="./love.html">Khoa học</a></li>
-            <li class="hid h1"><a href="./love.html">Hoạt hình</a></li>
+            <li><a href="./category.html">Xem nhiều</a></li>
+            <?php
+            while ($dong = mysqli_fetch_array($run)) {
+                ?>
+                <li class="hid"><a href="categories.php?cate=<?php echo $dong['id_category'] ?>"><?php echo $dong['category_name'] ?></a></li>
+            <?php
+            }
+            ?>
         </ul>
     </div>
     <div class="user-action">
         <ul>
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
+            <li><a href="search.php?key="><i class="fas fa-search"></i></a></li>
             <li><a href="./login.html">Đăng nhập</a></li>
             <li></li>
         </ul>

@@ -14,34 +14,34 @@
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 </head>
 <?php
-    include('config.php');
-    if(isset($_POST['Register'])){
-        $username=$_POST['username'];
-        $phone=$_POST['phone'];
-        $password=$_POST['password'];
-        $repassword=$_POST['repassword'];
-        if(strlen($password)<=6){
-            echo "<script type=\"text/javascript\">alert('Mật khẩu phải nhiều hơn 6 kí tự');</script>";
-        }else{
-            if($password != $repassword){
-                echo "<script type=\"text/javascript\">alert('Mật khẩu không trùng khớp');</script>";
-            }
-            else{
-                $getUser="select * from users where user_name='$username'";
-                $query=mysqli_query($conn,$getUser);
-                $num = mysqli_num_rows($query);
-                if($num>0){
-                    echo "<script type=\"text/javascript\">alert('Tài khoản này đã tồn tại, vui lòng chọn email khác');</script>";
-                }else{
-                    $insertUser = "insert into user(username,password,dialnumber)
+include('config.php');
+if (isset($_POST['Register'])) {
+    $username = $_POST['username'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+    $repassword = $_POST['repassword'];
+    if (strlen($password) <= 6) {
+        echo "<script type=\"text/javascript\">alert('Mật khẩu phải nhiều hơn 6 kí tự');</script>";
+    } else {
+        if ($password != $repassword) {
+            echo "<script type=\"text/javascript\">alert('Mật khẩu không trùng khớp');</script>";
+        } else {
+            $getUser = "select * from users where user_name='$username'";
+            $query = mysqli_query($conn, $getUser);
+            $num = mysqli_num_rows($query);
+            if ($num > 0) {
+                echo "<script type=\"text/javascript\">alert('Tài khoản này đã tồn tại, vui lòng chọn email khác');</script>";
+            } else {
+                $insertUser = "insert into user(username,password,dialnumber)
                      values('$username','$password','$phone')";
-                     $query2 = mysqli_query($conn,$insertUser);
-                    header('location:login.php');
-                }
+                $query2 = mysqli_query($conn, $insertUser);
+                header('location:login.php');
             }
         }
     }
+}
 ?>
+
 <body>
     <?php
     include("modules/backtotop.php");

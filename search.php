@@ -37,6 +37,9 @@ $key = $_GET['key'];
         $tmp = $_POST['name'];
         header("location:search.php?key=$tmp");
     }
+    $sql_search = "select * from movie where movie_name like '%$key%'";
+    $run_search = mysqli_query($conn, $sql_search);
+    $rows = mysqli_num_rows($run_search);
     ?>
     <div class="main-search">
         <form action="" method="post">
@@ -47,7 +50,10 @@ $key = $_GET['key'];
                 <button type="submit" id="sbtn" name="sbtn">Tìm kiếm</button>
             </div>
             <div class="empty" style="display: <?php if ($key != "") echo 'none' ?>"></div>
-            <div class="container" style="display: <?php if ($key == "") echo 'none' ?>">
+            <div class="nonResult" style="display: <?php if ($rows > 0) echo 'none' ?>">
+                <h1>Không có kết quả phù hợp</h1>
+            </div>
+            <div class="container" style="display: <?php if ($key == "" or $rows == 0) echo 'none' ?>">
                 <div class="result-header">
                     <div>
                         <h2>Kết quả</h2>

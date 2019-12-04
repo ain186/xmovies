@@ -58,6 +58,14 @@
 .empty {
   height: 600px;
 }
+.nonResult {
+  height: 600px;
+}
+.nonResult h1 {
+  color: rgb(66, 63, 63);
+  text-align: center;
+  padding-top: 250px;
+}
 @media only screen and (max-width: 650px) {
   .search-header {
     height: 70px;

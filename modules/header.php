@@ -28,7 +28,23 @@ $run = mysqli_query($conn, $sql);
     <div class="user-action">
         <ul>
             <li><a href="search.php?key="><i class="fas fa-search"></i></a></li>
-            <li><a href="./login.html">Đăng nhập</a></li>
+            <li>
+                <?php 
+                if (!isset($_SESSION)) session_start();
+                if(isset($_SESSION['username'])){
+                    echo "
+                    <div class='w3-dropdown-click'>
+                    <button onclick='dropDown()' style='background:black;border:none;color:white;padding-left:10px;padding-right:10px;padding-bottom:10px'>".$_SESSION['username']."</button>
+                    <div id='Demo' >
+                        <a href='logout.php' class='demo'>Đăng xuất</a>
+                    </div>
+                    </div>
+                    ";
+                }else{
+                    echo "Đăng nhập";
+                }
+                ?>
+                </li>
             <li></li>
         </ul>
     </div>

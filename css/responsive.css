@@ -34,6 +34,9 @@
         position: absolute;
         right: 0px;
     }
+    .user-action ul li{
+        margin: auto 5px !important;
+    }
     .user-action ul li a {
         margin: auto 10px;
     }

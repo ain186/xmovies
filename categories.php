@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include("config.php");
+$id = $_GET['cate'];
+$sql_kind = "select * from category where id_category = '$id'";
+$run_kind = mysqli_query($conn, $sql_kind);
+$dong_kind = mysqli_fetch_array($run_kind);
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Trang chủ</title>
+    <title>Phim <?php echo strtolower($dong_kind['category_name']) ?></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">

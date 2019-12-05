@@ -1,3 +1,22 @@
+<?php
+session_start();
+include('config.php');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $query = "select id_user,username,password,dialnumber from user where password='$password' and username='$username' ";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) == 1) {
+        list($id, $username, $password, $dialnumber) = mysqli_fetch_array($result, MYSQLI_NUM);
+        $_SESSION['id'] = $id;
+        $_SESSION['username'] = $username;
+        $_SESSION['phone'] = $dialnumber;
+        header('location:index.php');
+    } else {
+        echo "<script type=\"text/javascript\">alert('Tên người dùng hoặc mật khẩu không đúng');</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,19 +41,19 @@
     ?>
     <div id="main-content">
         <div class="container">
-            <div class="form-area">
+            <form action="" class="form-area" method="post">
                 <div class="login">
                     <div class="login-title">
                         <h2>Đăng nhập</h2>
                     </div>
                     <div class="inner">
                         <div class="form-group">
-                            <input type="text" value="" placeholder="Điện thoại" class="form-control">
+                            <input type="text" value="" placeholder="Tên người dùng" class="form-control" name="username">
                         </div>
                         <div class="form-group">
-                            <input type="text" value="" placeholder="Mật khẩu" class="form-control">
+                            <input type="password" value="" placeholder="Mật khẩu" class="form-control" name="password">
                         </div>
-                        <button class="btn btn-login">Đăng nhập</button>
+                        <button type="submit" class="btn btn-login" name="Login">Đăng nhập</button>
                         <div class="text-area">
                             <p>Hoặc</p>
                         </div>
@@ -42,12 +61,12 @@
                             <button class="btn btn-facebook">Facebook</button>
                             <button class="btn btn-google">Google</button>
                         </div>
-                        <div class="text-area">Chưa có tài khoản? <a href=#>Đăng ký ngay.</a>
+                        <div class="text-area">Chưa có tài khoản? <a href="signup.php">Đăng ký ngay.</a>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
+        </form>
     </div>
     <?php
     include("modules/footer.php");

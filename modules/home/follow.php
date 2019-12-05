@@ -1,5 +1,5 @@
 <div class="block">
-    <div class="block-title">Phim yêu thích</div>
+    <div class="block-title">Dành cho bạn</div>
     <div class="block-content">
         <a href="./watch.html">
             <div class="block-element-spe">

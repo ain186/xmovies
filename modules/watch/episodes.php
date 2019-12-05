@@ -1,36 +1,17 @@
-<div class="playerFooter">
+<div class="playerFooter" style="display: <?php if ($dong_info['episodes'] == 1) echo "none;" ?>">
     <h2 style="color: white;">Tập phim</h2>
     <ul class="episodes">
-        <li><button class="btn active">Tập 1</button></li>
-        <li><button class="btn">Tập 2</button></li>
-        <li><button class="btn">Tập 3</button></li>
-        <li><button class="btn">Tập 4</button></li>
-        <li><button class="btn">Tập 5</button></li>
-        <li><button class="btn">Tập 6</button></li>
-        <li><button class="btn">Tập 7</button></li>
-        <li><button class="btn">Tập 8</button></li>
-        <li><button class="btn">Tập 9</button></li>
-        <li><button class="btn">Tập 10</button></li>
-        <li><button class="btn">Tập 11</button></li>
-        <li><button class="btn">Tập 12</button></li>
-        <li><button class="btn">Tập 13</button></li>
-        <li><button class="btn">Tập 14</button></li>
-        <li><button class="btn">Tập 15</button></li>
-        <li><button class="btn">Tập 16</button></li>
-        <li><button class="btn">Tập 17</button></li>
-        <li><button class="btn">Tập 18</button></li>
-        <li><button class="btn">Tập 19</button></li>
-        <li><button class="btn">Tập 20</button></li>
-        <li><button class="btn">Tập 21</button></li>
-        <li><button class="btn">Tập 22</button></li>
-        <li><button class="btn">Tập 23</button></li>
-        <li><button class="btn">Tập 24</button></li>
-        <li><button class="btn">Tập 25</button></li>
-        <li><button class="btn">Tập 26</button></li>
-        <li><button class="btn">Tập 27</button></li>
-        <li><button class="btn">Tập 28</button></li>
-        <li><button class="btn">Tập 29</button></li>
-        <li><button class="btn">Tập 30</button></li>
+        <?php
+        for ($i = 1; $i <= $dong_info['episodes']; $i++) {
+            ?>
+            <li>
+                <a href="watch.php?<?php echo "movie=$id&ep=$i" ?>">
+                    <button class="btn <?php if ($ep == $i) echo 'active' ?>">Tập <?php echo $i ?></button>
+                </a>
+            </li>
+        <?php
+        }
+        ?>
     </ul>
 </div>
 <div class="clearfix"></div>

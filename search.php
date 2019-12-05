@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include("config.php");
+$key = $_GET['key'];
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tìm kiếm</title>
+    <title>
+        <?php
+        if ($key == "") {
+            echo 'Tìm kiếm';
+        } else {
+            echo "Kết quả cho \"$key\"";
+        }
+        ?>
+    </title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/search.css">
@@ -20,34 +33,46 @@
     <?php
     include("modules/backtotop.php");
     include("modules/header.php");
+    if (isset($_POST['sbtn'])) {
+        $tmp = $_POST['name'];
+        header("location:search.php?key=$tmp");
+    }
+    $sql_search = "select * from movie where movie_name like '%$key%'";
+    $run_search = mysqli_query($conn, $sql_search);
+    $rows = mysqli_num_rows($run_search);
     ?>
     <div class="main-search">
-        <div class="search-header">
-            <input id="name" placeholder="Nhập tên phim cần tìm...">
-        </div>
-        <div class="search-btn">
-            <button type="submit" id="sbtn">Tìm kiếm</button>
-        </div>
-        <div class="empty" style="display: none"></div>
-        <div class="container">
-            <div class="result-header">
-                <div>
-                    <h2>Kết quả</h2>
-                </div>
-                <div class="sort">
-                    <label>Sắp xếp: </label>
-                    <select id="choices">
-                        <option>Mới nhất</option>
-                        <option>Cũ nhất</option>
-                        <option>a-z</option>
-                        <option>z-a</option>
-                    </select>
-                </div>
+        <form action="" method="post">
+            <div class="search-header">
+                <input id="name" name="name" placeholder="Nhập tên phim cần tìm...">
             </div>
-            <?php
-            include("modules/search/list.php");
-            ?>
-        </div>
+            <div class="search-btn">
+                <button type="submit" id="sbtn" name="sbtn">Tìm kiếm</button>
+            </div>
+            <div class="empty" style="display: <?php if ($key != "") echo 'none' ?>"></div>
+            <div class="nonResult" style="display: <?php if ($rows > 0) echo 'none' ?>">
+                <h1>Không có kết quả phù hợp</h1>
+            </div>
+            <div class="container" style="display: <?php if ($key == "" or $rows == 0) echo 'none' ?>">
+                <div class="result-header">
+                    <div>
+                        <h2>Kết quả</h2>
+                    </div>
+                    <div class="sort">
+                        <label>Sắp xếp: </label>
+                        <select id="choices">
+                            <option>Mới nhất</option>
+                            <option>Cũ nhất</option>
+                            <option>a-z</option>
+                            <option>z-a</option>
+                        </select>
+                    </div>
+                </div>
+                <?php
+                include("modules/search/list.php");
+                ?>
+            </div>
+        </form>
     </div>
     <?php
     include("modules/footer.php");

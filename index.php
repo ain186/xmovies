@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])){
+        header('location:login.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +24,7 @@
 
 <body>
     <?php
+    include("config.php");
     include("modules/backtotop.php");
     include("modules/header.php");
     ?>

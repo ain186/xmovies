@@ -1,44 +1,33 @@
 <div class="filmInfo">
     <div class="filmImg" style="width: 15.16666666667%;">
-        <img src="images/films/nguoi-ban-gai-toi-khong-the-yeu.jpg" width="100%">
+        <img src="./images/films/<?php echo $dong_info['movie_image'] ?>.webp" width="100%">
     </div>
     <div class="filmDescribe">
-        <p class="filmname">Người bạn gái tôi không thể yêu</p>
+        <p class="filmname"><?php echo $dong_info['movie_name'] ?></p>
         <ul class="extraButton">
-            <li><button class="btn follow"><i class="fas fa-heart"></i> Theo dõi</button></li>
+            <li><button class="btn follow"><i class="fas fa-heart"></i> Yêu thích</button></li>
             <li><button class="btn facebook"><i class="fab fa-facebook-square"></i> Chia sẻ</button></li>
             <li><button class="btn report"><i class="fas fa-exclamation-triangle"></i> Báo cáo</button></li>
         </ul>
         <div class="clearfix"></div>
         <div class="describe">
             <p style="color: white; font-weight: 800; margin-bottom: 10px;">Nội dung</p>
-            <p style="text-align: justify;">Người Bạn Gái Tôi Không Thể Yêu là bộ phim tình cảm lãng mạn của
-                Trung Quốc được FPT Play mua
-                bản quyền phát song song và được cập nhật vào tối thứ 3 hàng tuần.
-                Người Bạn Gái Tôi Không Thể Yêu xoanh quanh Đinh Tiểu Nhu (Kiều Hân), sau một lần bị hiểu
-                lầm vô tình bị một người phụ nữ nguyền rủa một lời nguyền tai quái rằng cả đời sẽ không có
-                được hạnh phúc. Không ngờ lời nguyền rủa đó lại trở thành sự thật. Từ đó về sau, bất kỳ mối
-                tình nào của cô đều kết thúc bằng lời chia tay của người bạn trai. Tệ hại hơn nữa, anh chàng
-                đó sẽ tìm được tình yêu đích thực của đời mình ngay sau đó. Quá chán nản, sau khi kết thúc
-                với chàng trai thứ 30, Đinh Tiểu Nhu được bạn giới thiệu tham gia một bữa tiệc nhỏ mang tên
-                “Lí do tôi không thể yêu đương”. Tại đây, cô gặp Trì Tín (Hứa Ngụy Châu) - một MC truyền
-                hình ngoại cảnh và tham gia vào cuộc chơi “yêu để tìm người yêu mới” do anh chàng sắp đặt.
-            </p>
+            <p style="text-align: justify;"><?php echo $dong_info['movie_description'] ?></p>
         </div>
     </div>
     <div class="filmDetail">
         <table>
-            <tr>
+            <tr style="display: <?php if ($dong_info['episodes'] == 1) echo 'none' ?>">
                 <th>Số tập</th>
-                <td>30/30</td>
+                <td><?php echo $dong_info['episodes'] ?></td>
             </tr>
             <tr>
                 <th>Thời lượng</th>
-                <td>45 phút</td>
+                <td><?php echo $dong_info['duration'] ?> phút</td>
             </tr>
             <tr>
                 <th>Đạo diễn</th>
-                <td>Vũ Trung Trung</td>
+                <td><?php echo $dong_info['director'] ?></td>
             </tr>
             <tr>
                 <th>Diễn viên</th>
@@ -46,15 +35,15 @@
             </tr>
             <tr>
                 <th>Quốc gia</th>
-                <td>China</td>
+                <td><?php echo $dong_info['country'] ?></td>
             </tr>
             <tr>
                 <th>Thể loại</th>
-                <td>Hoa ngữ</td>
+                <td><?php echo $dong_info['category_name'] ?></td>
             </tr>
             <tr>
                 <th>Phát hành</th>
-                <td>8/10/2019</td>
+                <td><?php echo $dong_info['publish_date'] ?></td>
             </tr>
         </table>
     </div>

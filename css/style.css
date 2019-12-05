@@ -59,7 +59,7 @@ header {
   justify-content: space-between;
   background: black;
 
-  height: 56px;
+  height: 58px;
   position: fixed;
   z-index: 10000;
 }
@@ -145,7 +145,7 @@ header {
 }
 .user-action {
   padding-top: 15px;
-  min-width: 150px;
+  min-width: 154px;
 }
 .user-action ul li {
   list-style: none;
@@ -245,8 +245,8 @@ header {
 }
 .block-content {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .block-content a {
   display: contents;
@@ -254,18 +254,17 @@ header {
 
 /* ------------------------------------------------ */
 
-.block-content a div {
-  margin: 10px 0;
-}
 
 /* ---------------------------------------------------- */
 
 .block-element {
-  width: 15%;
+  width: 15.1666666666667%;
+  margin: 0 0.75%;
   overflow: hidden;
 }
 .block-element-spe {
-  width: 22%;
+  width: 23.5%;
+  margin: 0 0.75%;
   overflow: hidden;
 }
 .block-element-spe > img {
@@ -406,4 +405,12 @@ footer > .container {
 }
 .btn-google {
   background: #dd4b39;
+}
+.demo{
+  display: none;
+}
+.w3-show .demo{
+  display: table-cell;
+  border:1px solid white;
+  background: #9b9b9b;
 }
